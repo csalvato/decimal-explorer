@@ -75,12 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
     tenthsContainer.appendChild(tenthsGroup);
 
     // Create visual elements for hundredths
+    const hundredthsGroup = document.createElement('div');
+    hundredthsGroup.className = 'hundredths-group';
+
     for (let i = 0; i < hundredths; i++) {
       const hundredthElement = document.createElement('div');
       hundredthElement.className = 'hundredth-piece';
       hundredthElement.title = '0.01 (one hundredth) - exactly 1/100th the size of a whole';
-      hundredthsContainer.appendChild(hundredthElement);
+      hundredthsGroup.appendChild(hundredthElement);
     }
+
+    hundredthsContainer.appendChild(hundredthsGroup);
 
     // Create visual elements for thousandths
     for (let i = 0; i < thousandths; i++) {
