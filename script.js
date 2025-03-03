@@ -52,19 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hundredths = parts.length > 1 && parts[1].length >= 2 ? parseInt(parts[1][1]) : 0;
     const thousandths = parts.length > 1 && parts[1].length >= 3 ? parseInt(parts[1][2]) : 0;
 
-    // Add relationship indicators between place values
-    const onesRelationship = document.createElement('div');
-    onesRelationship.className = 'place-relationship';
-    onesContainer.appendChild(onesRelationship);
-
-    const tenthsRelationship = document.createElement('div');
-    tenthsRelationship.className = 'place-relationship';
-    tenthsContainer.appendChild(tenthsRelationship);
-
-    const hundredthsRelationship = document.createElement('div');
-    hundredthsRelationship.className = 'place-relationship';
-    hundredthsContainer.appendChild(hundredthsRelationship);
-
     // Create visual elements for whole units
     for (let i = 0; i < wholePart; i++) {
       const wholeElement = document.createElement('div');
