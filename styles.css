@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+}
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+input[type="number"] {
+  padding: 10px 15px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  width: 120px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.number-display {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.number-display h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+#display-number {
+  font-size: 1.8rem;
+  color: #3498db;
+}
+
+.visualization-container {
+  margin-bottom: 40px;
+}
+
+.place-value-labels {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.place-label {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #ecf0f1;
+  border-radius: 5px 5px 0 0;
+}
+
+.visualization {
+  display: flex;
+  min-height: 300px;
+  border: 2px solid #ecf0f1;
+  border-radius: 0 0 5px 5px;
+}
+
+.place-value-container {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Pieces for visualization */
+.whole-piece {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.tenth-piece {
+  width: 30px;
+  height: 100px;
+  background-color: #2ecc71;
+  border-radius: 3px;
+  margin: 2px;
+}
+
+.hundredth-piece {
+  width: 20px;
+  height: 20px;
+  background-color: #e74c3c;
+  border-radius: 3px;
+  margin: 2px;
+}
+
+.thousandth-piece {
+  width: 10px;
+  height: 10px;
+  background-color: #f39c12;
+  border-radius: 2px;
+  margin: 2px;
+}
+
+.explanation {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.explanation h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+#explanation-text {
+  line-height: 1.8;
+}
+
+/* Animation for pieces */
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.whole-piece,
+.tenth-piece,
+.hundredth-piece,
+.thousandth-piece {
+  animation: pop-in 0.4s ease-out forwards;
+}
+
+/* Staggered animation delay */
+.place-value-container>div:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.place-value-container>div:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.place-value-container>div:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.place-value-container>div:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.place-value-container>div:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.place-value-container>div:nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+.place-value-container>div:nth-child(7) {
+  animation-delay: 0.3s;
+}
+
+.place-value-container>div:nth-child(8) {
+  animation-delay: 0.35s;
+}
+
+.place-value-container>div:nth-child(9) {
+  animation-delay: 0.4s;
+}
+
+.place-value-container>div:nth-child(10) {
+  animation-delay: 0.45s;
+}
