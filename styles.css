@@ -164,7 +164,7 @@ button:hover {
 }
 
 .whole-piece::after {
-  content: "1";
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -209,7 +209,7 @@ button:hover {
 }
 
 .tenth-piece::after {
-  content: "0.1";
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -231,7 +231,7 @@ button:hover {
 }
 
 .hundredth-piece::after {
-  content: "0.01";
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
