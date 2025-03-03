@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     explanation += `<ul>
       <li>A <strong>tenth</strong> (0.1) is exactly 1/10th the width of a whole</li>
       <li>A <strong>hundredth</strong> (0.01) is exactly 1/100th the area of a whole</li>
-      <li>A <strong>thousandth</strong> (0.001) is even smaller, 1/1000th the volume of a whole</li>
+      <li>A <strong>thousandth</strong> (0.001) is even smaller, 1/1000th the area of a whole</li>
     </ul>`;
 
     explanation += `<p>In our place value system, as we move to the right of the decimal point, each position is worth 1/10th of the position to its left.</p>`;
