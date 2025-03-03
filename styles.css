@@ -130,8 +130,8 @@ button:hover {
 
 /* Pieces for visualization */
 .whole-piece {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   background-color: #3498db;
   border-radius: 0;
   margin: 2px;
@@ -143,14 +143,14 @@ button:hover {
   background-image:
     repeating-linear-gradient(to right,
       transparent 0px,
-      transparent 9px,
-      rgba(255, 255, 255, 0.3) 9px,
-      rgba(255, 255, 255, 0.3) 10px),
+      transparent 19px,
+      rgba(255, 255, 255, 0.3) 19px,
+      rgba(255, 255, 255, 0.3) 20px),
     repeating-linear-gradient(to bottom,
       transparent 0px,
-      transparent 9px,
-      rgba(255, 255, 255, 0.3) 9px,
-      rgba(255, 255, 255, 0.3) 10px);
+      transparent 19px,
+      rgba(255, 255, 255, 0.3) 19px,
+      rgba(255, 255, 255, 0.3) 20px);
 }
 
 /* Add overlays to emphasize the grid divisions */
@@ -183,9 +183,9 @@ button:hover {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 100px;
+  width: 200px;
   /* Match the width of a whole */
-  height: 100px;
+  height: 200px;
   margin: 2px;
   /* Match the margin of the whole piece */
   border-radius: 4px;
@@ -195,8 +195,8 @@ button:hover {
 
 .tenth-piece {
   /* Exactly 1/10th the width of the whole piece */
-  width: 8px;
-  height: 100px;
+  width: 16px;
+  height: 200px;
   background-color: #2ecc71;
   border-radius: 0;
   margin: 0;
@@ -226,10 +226,25 @@ button:hover {
   white-space: nowrap;
 }
 
+.hundredths-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  /* No gap between hundredth pieces */
+  width: auto;
+  /* Auto width since we're stacking vertically */
+  margin: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+  /* Keep pieces inside the border radius */
+}
+
 .hundredth-piece {
-  width: 8px;
-  height: 10px;
+  width: 16px;
+  height: 20px;
   background-color: #e74c3c;
+  /* Maintain original red */
   border-radius: 0;
   margin: 0;
   position: relative;
@@ -252,10 +267,22 @@ button:hover {
   font-weight: bold;
 }
 
+.thousandths-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: auto;
+  margin: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
 .thousandth-piece {
-  width: 8px;
-  height: 1px;
+  width: 16px;
+  height: 2px;
   background-color: #f39c12;
+  /* Maintain original orange */
   border-radius: 0;
   margin: 0;
   position: relative;
@@ -397,29 +424,4 @@ button:hover {
   height: 2px;
   background-color: #aaa;
   border-top: 1px dashed white;
-}
-
-.hundredths-group {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 0;
-  /* No gap between hundredth pieces */
-  width: auto;
-  /* Auto width since we're stacking vertically */
-  margin: 2px;
-  border-radius: 3px;
-  overflow: hidden;
-  /* Keep pieces inside the border radius */
-}
-
-.thousandths-group {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 0;
-  width: auto;
-  margin: 2px;
-  border-radius: 3px;
-  overflow: hidden;
 }
