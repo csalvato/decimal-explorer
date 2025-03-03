@@ -88,12 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
     hundredthsContainer.appendChild(hundredthsGroup);
 
     // Create visual elements for thousandths
+    const thousandthsGroup = document.createElement('div');
+    thousandthsGroup.className = 'thousandths-group';
+
     for (let i = 0; i < thousandths; i++) {
       const thousandthElement = document.createElement('div');
       thousandthElement.className = 'thousandth-piece';
       thousandthElement.title = '0.001 (one thousandth) - exactly 1/1000th the size of a whole';
-      thousandthsContainer.appendChild(thousandthElement);
+      thousandthsGroup.appendChild(thousandthElement);
     }
+
+    thousandthsContainer.appendChild(thousandthsGroup);
 
     // Update explanation text
     generateExplanation(wholePart, tenths, hundredths, thousandths);

@@ -133,17 +133,20 @@ button:hover {
   width: 100px;
   height: 100px;
   background-color: #3498db;
-  border-radius: 4px;
+  border-radius: 0;
   margin: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 2;
-  box-sizing: content-box;
-  /* Ensure borders are added to the width */
+  box-sizing: border-box;
 
-  /* Create a 10×1 grid to show tenths */
+  /* Create a 10×10 grid to show tenths and hundredths */
   background-image:
     repeating-linear-gradient(to right,
+      transparent 0px,
+      transparent 9px,
+      rgba(255, 255, 255, 0.3) 9px,
+      rgba(255, 255, 255, 0.3) 10px),
+    repeating-linear-gradient(to bottom,
       transparent 0px,
       transparent 9px,
       rgba(255, 255, 255, 0.3) 9px,
@@ -191,21 +194,24 @@ button:hover {
 }
 
 .tenth-piece {
-  /* Exactly 1/10th the width of the whole piece, accounting for borders */
+  /* Exactly 1/10th the width of the whole piece */
   width: 8px;
   height: 100px;
   background-color: #2ecc71;
   border-radius: 0;
   margin: 0;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-right: none;
   position: relative;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
-/* Add right border only to the last tenth piece */
+/* More contrasting alternate color for even tenths */
+.tenth-piece:nth-child(even) {
+  background-color: #7adea1;
+}
+
+/* Remove last-child special case since we don't have borders anymore */
 .tenth-piece:last-child {
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: none;
 }
 
 .tenth-piece::after {
@@ -226,9 +232,13 @@ button:hover {
   background-color: #e74c3c;
   border-radius: 0;
   margin: 0;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   position: relative;
-  box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+/* More contrasting alternate color for even hundredths */
+.hundredth-piece:nth-child(even) {
+  background-color: #f29f97;
 }
 
 .hundredth-piece::after {
@@ -243,15 +253,18 @@ button:hover {
 }
 
 .thousandth-piece {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 1px;
   background-color: #f39c12;
-  border-radius: 50%;
-  margin: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  margin: 0;
   position: relative;
-  transform: scale(0.33);
+  box-sizing: border-box;
+}
+
+/* More contrasting alternate color for even thousandths */
+.thousandth-piece:nth-child(even) {
+  background-color: #f9cf7a;
 }
 
 .explanation {
@@ -398,4 +411,15 @@ button:hover {
   border-radius: 3px;
   overflow: hidden;
   /* Keep pieces inside the border radius */
+}
+
+.thousandths-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: auto;
+  margin: 2px;
+  border-radius: 3px;
+  overflow: hidden;
 }
