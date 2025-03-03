@@ -52,27 +52,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const hundredths = parts.length > 1 && parts[1].length >= 2 ? parseInt(parts[1][1]) : 0;
     const thousandths = parts.length > 1 && parts[1].length >= 3 ? parseInt(parts[1][2]) : 0;
 
+    // Add relationship indicators between place values
+    const onesRelationship = document.createElement('div');
+    onesRelationship.className = 'place-relationship';
+    onesContainer.appendChild(onesRelationship);
+
+    const tenthsRelationship = document.createElement('div');
+    tenthsRelationship.className = 'place-relationship';
+    tenthsContainer.appendChild(tenthsRelationship);
+
+    const hundredthsRelationship = document.createElement('div');
+    hundredthsRelationship.className = 'place-relationship';
+    hundredthsContainer.appendChild(hundredthsRelationship);
+
     // Create visual elements for whole units
     for (let i = 0; i < wholePart; i++) {
       const wholeElement = document.createElement('div');
       wholeElement.className = 'whole-piece';
-      wholeElement.title = '1 whole';
+      wholeElement.title = '1 whole (100% of the unit)';
       onesContainer.appendChild(wholeElement);
     }
 
-    // Create visual elements for tenths
+    // Create a container specifically for the tenths to align them without gaps
+    const tenthsGroup = document.createElement('div');
+    tenthsGroup.className = 'tenths-group';
+
+    // Only create the number of tenth pieces that exist in the number
     for (let i = 0; i < tenths; i++) {
       const tenthElement = document.createElement('div');
       tenthElement.className = 'tenth-piece';
-      tenthElement.title = '0.1 (one tenth)';
-      tenthsContainer.appendChild(tenthElement);
+      tenthElement.title = '0.1 (one tenth) - exactly 1/10th the width of a whole';
+      tenthsGroup.appendChild(tenthElement);
     }
+
+    tenthsContainer.appendChild(tenthsGroup);
 
     // Create visual elements for hundredths
     for (let i = 0; i < hundredths; i++) {
       const hundredthElement = document.createElement('div');
       hundredthElement.className = 'hundredth-piece';
-      hundredthElement.title = '0.01 (one hundredth)';
+      hundredthElement.title = '0.01 (one hundredth) - exactly 1/100th the size of a whole';
       hundredthsContainer.appendChild(hundredthElement);
     }
 
@@ -80,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < thousandths; i++) {
       const thousandthElement = document.createElement('div');
       thousandthElement.className = 'thousandth-piece';
-      thousandthElement.title = '0.001 (one thousandth)';
+      thousandthElement.title = '0.001 (one thousandth) - exactly 1/1000th the size of a whole';
       thousandthsContainer.appendChild(thousandthElement);
     }
 
@@ -99,15 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (tenths > 0) {
-      explanation += `<li><strong>${tenths}</strong> tenth${tenths !== 1 ? 's' : ''} (${tenths} × 0.1)</li>`;
+      explanation += `<li><strong>${tenths}</strong> tenth${tenths !== 1 ? 's' : ''} (${tenths} × 0.1) - each tenth is <strong>1/10</strong> the width of a whole</li>`;
     }
 
     if (hundredths > 0) {
-      explanation += `<li><strong>${hundredths}</strong> hundredth${hundredths !== 1 ? 's' : ''} (${hundredths} × 0.01)</li>`;
+      explanation += `<li><strong>${hundredths}</strong> hundredth${hundredths !== 1 ? 's' : ''} (${hundredths} × 0.01) - each hundredth is <strong>1/100</strong> the size of a whole</li>`;
     }
 
     if (thousandths > 0) {
-      explanation += `<li><strong>${thousandths}</strong> thousandth${thousandths !== 1 ? 's' : ''} (${thousandths} × 0.001)</li>`;
+      explanation += `<li><strong>${thousandths}</strong> thousandth${thousandths !== 1 ? 's' : ''} (${thousandths} × 0.001) - each thousandth is <strong>1/1000</strong> the size of a whole</li>`;
     }
 
     explanation += '</ul>';
@@ -138,8 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     explanation += `<p>${calculation} = ${ones}.${tenths}${hundredths}${thousandths}</p>`;
 
-    // Add more kid-friendly explanation
-    explanation += `<p>A decimal number has two parts: the whole number part (before the decimal point) and the fractional part (after the decimal point).</p>`;
+    // Add explanation about proportional sizes
+    explanation += `<p>Notice how the pieces are proportionally sized:</p>`;
+    explanation += `<ul>
+      <li>A <strong>tenth</strong> (0.1) is exactly 1/10th the width of a whole</li>
+      <li>A <strong>hundredth</strong> (0.01) is exactly 1/100th the area of a whole</li>
+      <li>A <strong>thousandth</strong> (0.001) is even smaller, 1/1000th the volume of a whole</li>
+    </ul>`;
+
     explanation += `<p>In our place value system, as we move to the right of the decimal point, each position is worth 1/10th of the position to its left.</p>`;
 
     explanationText.innerHTML = explanation;

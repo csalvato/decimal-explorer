@@ -119,6 +119,13 @@ button:hover {
   align-content: flex-start;
   justify-content: center;
   gap: 5px;
+  position: relative;
+}
+
+/* Styles for placing piece containers at the same position */
+.place-value-container>div {
+  margin-top: 20px;
+  /* Add space from the top */
 }
 
 /* Pieces for visualization */
@@ -126,32 +133,124 @@ button:hover {
   width: 100px;
   height: 100px;
   background-color: #3498db;
-  border-radius: 5px;
+  border-radius: 4px;
   margin: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  box-sizing: content-box;
+  /* Ensure borders are added to the width */
+
+  /* Create a 10×1 grid to show tenths */
+  background-image:
+    repeating-linear-gradient(to right,
+      transparent 0px,
+      transparent 9px,
+      rgba(255, 255, 255, 0.3) 9px,
+      rgba(255, 255, 255, 0.3) 10px);
+}
+
+/* Add overlays to emphasize the grid divisions */
+.whole-piece::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.whole-piece::after {
+  content: "1";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Tenths group container to hold all tenth pieces together */
+.tenths-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100px;
+  /* Match the width of a whole */
+  height: 100px;
+  margin: 2px;
+  /* Match the margin of the whole piece */
+  border-radius: 4px;
+  overflow: hidden;
+  /* Keep pieces inside the border radius */
 }
 
 .tenth-piece {
-  width: 30px;
+  /* Exactly 1/10th the width of the whole piece, accounting for borders */
+  width: 8px;
   height: 100px;
   background-color: #2ecc71;
-  border-radius: 3px;
-  margin: 2px;
+  border-radius: 0;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: none;
+  position: relative;
+  box-sizing: content-box;
+}
+
+/* Add right border only to the last tenth piece */
+.tenth-piece:last-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tenth-piece::after {
+  content: "0.1";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-size: 9px;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .hundredth-piece {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   background-color: #e74c3c;
   border-radius: 3px;
   margin: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.hundredth-piece::after {
+  content: "0.01";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6px;
+  color: white;
+  font-weight: bold;
 }
 
 .thousandth-piece {
   width: 10px;
   height: 10px;
   background-color: #f39c12;
-  border-radius: 2px;
+  border-radius: 50%;
   margin: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: scale(0.33);
 }
 
 .explanation {
@@ -232,4 +331,56 @@ button:hover {
 
 .place-value-container>div:nth-child(10) {
   animation-delay: 0.45s;
+}
+
+/* Special styling for the tenths container to eliminate horizontal gaps */
+#tenths-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  /* No gap between tenths */
+}
+
+#tenths-container .tenth-piece {
+  display: inline-block;
+  /* Display as inline-block to avoid wrapping */
+}
+
+/* Add a visual indicator connecting place values */
+.place-relationship {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px dashed #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Relationship text */
+.place-relationship::after {
+  content: "10 = 1";
+}
+
+/* Connecting lines between place values */
+.place-relationship::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: #aaa;
+  border-top: 1px dashed white;
 }
