@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const thousandthsContainer = document.getElementById('thousandths-container');
   const explanationText = document.getElementById('explanation-text');
 
+  // Track previous decimal values to determine what's new
+  let prevWholePart = 0;
+  let prevTenths = 0;
+  let prevHundredths = 0;
+  let prevThousandths = 0;
+
   // Initialize with default value
   visualizeDecimal(parseFloat(decimalInput.value));
 
@@ -56,6 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < wholePart; i++) {
       const wholeElement = document.createElement('div');
       wholeElement.className = 'whole-piece';
+      // Add animation only to new elements
+      if (i >= prevWholePart) {
+        wholeElement.classList.add('animate-pop-in');
+      }
       wholeElement.title = '1 whole (100% of the unit)';
       onesContainer.appendChild(wholeElement);
     }
@@ -68,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < tenths; i++) {
       const tenthElement = document.createElement('div');
       tenthElement.className = 'tenth-piece';
+      // Add animation only to new elements
+      if (i >= prevTenths) {
+        tenthElement.classList.add('animate-pop-in');
+      }
       tenthElement.title = '0.1 (one tenth) - exactly 1/10th the width of a whole';
       tenthsGroup.appendChild(tenthElement);
     }
@@ -81,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < hundredths; i++) {
       const hundredthElement = document.createElement('div');
       hundredthElement.className = 'hundredth-piece';
+      // Add animation only to new elements
+      if (i >= prevHundredths) {
+        hundredthElement.classList.add('animate-pop-in');
+      }
       hundredthElement.title = '0.01 (one hundredth) - exactly 1/100th the size of a whole';
       hundredthsGroup.appendChild(hundredthElement);
     }
@@ -94,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < thousandths; i++) {
       const thousandthElement = document.createElement('div');
       thousandthElement.className = 'thousandth-piece';
+      // Add animation only to new elements
+      if (i >= prevThousandths) {
+        thousandthElement.classList.add('animate-pop-in');
+      }
       thousandthElement.title = '0.001 (one thousandth) - exactly 1/1000th the size of a whole';
       thousandthsGroup.appendChild(thousandthElement);
     }
@@ -102,6 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update explanation text
     generateExplanation(wholePart, tenths, hundredths, thousandths);
+
+    // Store current values for next comparison
+    prevWholePart = wholePart;
+    prevTenths = tenths;
+    prevHundredths = hundredths;
+    prevThousandths = thousandths;
   }
 
   function generateExplanation(ones, tenths, hundredths, thousandths) {

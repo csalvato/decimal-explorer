@@ -309,70 +309,7 @@ button:hover {
   line-height: 1.8;
 }
 
-/* Animation for pieces */
-@keyframes pop-in {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  70% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.whole-piece,
-.tenth-piece,
-.hundredth-piece,
-.thousandth-piece {
-  animation: pop-in 0.4s ease-out forwards;
-}
-
-/* Staggered animation delay */
-.place-value-container>div:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.place-value-container>div:nth-child(2) {
-  animation-delay: 0.05s;
-}
-
-.place-value-container>div:nth-child(3) {
-  animation-delay: 0.1s;
-}
-
-.place-value-container>div:nth-child(4) {
-  animation-delay: 0.15s;
-}
-
-.place-value-container>div:nth-child(5) {
-  animation-delay: 0.2s;
-}
-
-.place-value-container>div:nth-child(6) {
-  animation-delay: 0.25s;
-}
-
-.place-value-container>div:nth-child(7) {
-  animation-delay: 0.3s;
-}
-
-.place-value-container>div:nth-child(8) {
-  animation-delay: 0.35s;
-}
-
-.place-value-container>div:nth-child(9) {
-  animation-delay: 0.4s;
-}
-
-.place-value-container>div:nth-child(10) {
-  animation-delay: 0.45s;
-}
+/* Animation keyframes and delays removed to prevent refreshing effects */
 
 /* Special styling for the tenths container to eliminate horizontal gaps */
 #tenths-container {
@@ -424,4 +361,26 @@ button:hover {
   height: 2px;
   background-color: #aaa;
   border-top: 1px dashed white;
+}
+
+/* Animation for new pieces only */
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animation class that will be added only to new elements */
+.animate-pop-in {
+  animation: pop-in 0.4s ease-out forwards;
 }
